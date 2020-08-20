@@ -14,3 +14,7 @@ class JsonReader:
     def get_password(self):
         password = self.data["password"]
         return password
+
+    def get_url(self):
+        url = self.data["url"]
+        return url
