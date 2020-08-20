@@ -7,14 +7,10 @@ class JsonReader:
         self.data = json.load(self.json_file)
         self.json_file.close()
 
-    def get_username(self):
-        username = self.data["username"]
-        return username
-
-    def get_password(self):
-        password = self.data["password"]
-        return password
-
     def get_url(self):
         url = self.data["url"]
         return url
+
+    def get_browser(self):
+        browser = self.data["browser"]
+        return browser
