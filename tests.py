@@ -1,5 +1,6 @@
 import pytest
 from framework.browser_actions import BrowserActions
+from tools.some_tools import random_string
 from main_page import MainPage
 
 
@@ -11,4 +12,14 @@ def test1(selected_driver, data):
 
     page = MainPage(selected_driver)
 
-    # action.driver_close()
+    page.js_alert_button_click()
+    page.js_dialog_accept()
+
+    page.js_confirm_button_click()
+    page.js_dialog_accept()
+
+    page.js_alert_prompt_click()
+    page.js_prompt_send_text(random_string(10))
+    page.js_dialog_accept()
+
+    action.driver_close()

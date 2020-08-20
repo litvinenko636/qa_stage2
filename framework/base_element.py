@@ -19,7 +19,8 @@ class BaseElement:
                                                                message=f"Can't find elements by locator {locator}")
 
     def element_click_by_locator(self, locator):
-        return self.find_element(locator).click()
+        element = (ElementWait(self.driver).element_wait()).until(EC.presence_of_element_located(locator))
+        return element.click()
 
     @staticmethod
     def element_click(element):
