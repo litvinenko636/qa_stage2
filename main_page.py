@@ -9,3 +9,4 @@ class MainPageLocators:
 class MainPage:
     def __init__(self, driver):
         self.actions = BaseElement(driver)
+

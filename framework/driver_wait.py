@@ -3,7 +3,7 @@ from tools.json_reader import JsonReader
 
 
 class ElementWait:
-    json = JsonReader('config_file.json')
+    json = JsonReader('config.json')
 
     def __init__(self, driver):
         self.driver = driver
