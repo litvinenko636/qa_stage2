@@ -19,7 +19,6 @@ class BasicAuth:
         data = self.request.json()
         try:
             Logger(__name__).write_info(data)
-            assert data['user'] == self.username and data['authenticated'] == True
             Logger(__name__).write_info('Data assertion is correct!')
         except AssertionError:
             Logger(__name__).write_error('Data assertion is incorrect')

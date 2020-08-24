@@ -7,4 +7,5 @@ class TestAuth:
         data = JsonReader("data.json")
         request = BasicAuth(data.get_url(), data.get_username(), data.get_password())
         request.authorization()
-        request.get_json()
+        key = request.get_json()
+        assert key['user'] == data.get_username() and key['authenticated'] == True
