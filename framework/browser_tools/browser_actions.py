@@ -1,9 +1,10 @@
+from framework.webdriver_singleton import Driver
 from tools.logger import Logger
 
 
 class BrowserActions:
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = Driver().connect()
 
     def url_open(self, url):
         Logger(__name__).write_info(url + " is opened")
