@@ -14,3 +14,7 @@ class JsonReader:
     def get_browser(self):
         browser = self.data["browser"]
         return browser
+
+    def get_password(self):
+        password = self.data["password"]
+        return password
