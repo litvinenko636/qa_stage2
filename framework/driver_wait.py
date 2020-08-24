@@ -1,12 +1,13 @@
 from selenium.webdriver.support.ui import WebDriverWait
+from framework.webdriver_singleton import Driver
 from tools.json_reader import JsonReader
 
 
 class ElementWait:
     json = JsonReader('config.json')
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = Driver().connect()
         self.timeout = 10
 
     def element_wait(self):

@@ -1,10 +1,11 @@
 from selenium.webdriver.common.alert import Alert
+from framework.webdriver_singleton import Driver
 from tools.logger import Logger
 
 
 class AlertActions:
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = Driver().connect()
 
     def dialog_accept(self):
         Logger(__name__).write_info("dialog accept button is clicked")

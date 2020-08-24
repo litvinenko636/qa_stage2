@@ -5,15 +5,15 @@ from tools.some_tools import random_string
 from main_page import MainPage
 
 
-@pytest.mark.usefixtures('selected_driver', 'data')
-def test1(selected_driver, data):
-    action = BrowserActions(selected_driver)
+@pytest.mark.usefixtures('data')
+def test1(data):
+    action = BrowserActions()
     action.url_open(data.get_url())
 
-    page = MainPage(selected_driver)
+    page = MainPage()
     page.alert_button_click()
 
-    alert = AlertActions(selected_driver)
+    alert = AlertActions()
     alert.dialog_accept()
 
     page.confirm_button_click()
