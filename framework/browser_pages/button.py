@@ -1,4 +1,4 @@
-from framework.base_element import BaseElement
+from framework.browser_pages.base_element import BaseElement
 
 
 class Button(BaseElement):

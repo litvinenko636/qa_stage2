@@ -1,5 +1,5 @@
-from framework.meta_singleton import MetaClassSingleton
-from framework.webdriver_factory import WebDriverFactory
+from framework.driver.meta_singleton import MetaClassSingleton
+from framework.driver.webdriver_factory import WebDriverFactory
 from tools.json_reader import JsonReader
 
 

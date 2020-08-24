@@ -1,5 +1,5 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from framework.webdriver_singleton import Driver
+from framework.driver.webdriver_singleton import Driver
 from tools.json_reader import JsonReader
 
 

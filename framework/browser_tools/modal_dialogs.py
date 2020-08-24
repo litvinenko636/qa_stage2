@@ -1,5 +1,5 @@
 from selenium.webdriver.common.alert import Alert
-from framework.webdriver_singleton import Driver
+from framework.driver.webdriver_singleton import Driver
 from tools.logger import Logger
 
 

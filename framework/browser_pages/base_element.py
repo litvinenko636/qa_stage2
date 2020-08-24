@@ -1,10 +1,10 @@
 from selenium.common import exceptions
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import ActionChains
-from framework.driver_wait import ElementWait
+from framework.browser_pages.driver_wait import ElementWait
 from accessify import private
 from tools.logger import Logger
-from framework.webdriver_singleton import Driver
+from framework.driver.webdriver_singleton import Driver
 
 
 class BaseElement:

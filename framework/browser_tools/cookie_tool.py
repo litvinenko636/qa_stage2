@@ -9,7 +9,6 @@ class CookieTool:
         cookie_dict = {"name": cookie_name, "value": cookie_value}
         cookie_add = self.driver.add_cookie(cookie_dict)
         Logger(__name__).write_info('Cookie ' + str(cookie_dict) + ' is added!')
-
         try:
             cookie_added = self.get_some_cookie(cookie_name)
             assert {cookie_added['name']: cookie_added['value']} == {cookie_name: cookie_value}
@@ -26,10 +25,8 @@ class CookieTool:
         return self.driver.get_cookies()
 
     def delete_all_cookies(self):
-
         self.driver.delete_all_cookies()
         Logger(__name__).write_info('Cookies is deleted!')
-
         try:
             assert self.get_all_cookies() == []
             Logger(__name__).write_info('Assertion is correct!')
@@ -40,10 +37,8 @@ class CookieTool:
             return True
 
     def delete_cookie(self, cookie_name):
-
         self.driver.delete_cookie(cookie_name)
         Logger(__name__).write_info('Cookie ' + cookie_name + ' is deleted!')
-
         try:
             assert self.get_some_cookie(cookie_name) is None
             Logger(__name__).write_info('Assertion is correct!')

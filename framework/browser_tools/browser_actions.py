@@ -1,4 +1,4 @@
-from framework.webdriver_singleton import Driver
+from framework.driver.webdriver_singleton import Driver
 from tools.logger import Logger
 
 
