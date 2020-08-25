@@ -18,3 +18,11 @@ class JsonReader:
     def get_password(self):
         password = self.data["password"]
         return password
+
+    def get_email(self):
+        email = self.data["email"]
+        return email
+
+    def get_domain(self):
+        domain = self.data["domain"]
+        return domain
