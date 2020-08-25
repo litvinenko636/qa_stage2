@@ -17,3 +17,6 @@ def test1(data, config):
     form_page.password_field_input(data.get_password())
     form_page.email_field_input(data.get_email())
     form_page.domain_field_input(data.get_domain())
+    form_page.dropdown_field_button_click()
+    form_page.dropdown_item_click()
+    form_page.accept_terms_check()
