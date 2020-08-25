@@ -19,6 +19,7 @@ class BaseElement:
         return (ElementWait().element_wait()).until(EC.presence_of_all_elements_located(self.locator))
 
     def element_click(self):
+        Logger(__name__).write_info("button is clicked")
         element = (ElementWait().element_wait()).until(EC.presence_of_element_located(self.locator))
         return element.click()
 
@@ -27,12 +28,12 @@ class BaseElement:
             Logger(__name__).write_info(text + " - has been sent")
             return self._find_element().send_keys(text)
         except exceptions.TimeoutException:
-            Logger(__name__).write_error("Incorrect input!")
+            Logger(__name__).write_error("incorrect input!")
 
     def move_to_element(self):
         try:
             element = self._find_element()
-            Logger(__name__).write_info("Element move")
+            Logger(__name__).write_info("to element move")
             return ActionChains(self.driver).move_to_element(element).perform()
         except exceptions.TimeoutException:
-            Logger(__name__).write_error("Incorrect move!")
+            Logger(__name__).write_error("incorrect move!")

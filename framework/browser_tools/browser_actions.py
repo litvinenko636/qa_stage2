@@ -11,9 +11,9 @@ class BrowserActions:
         return self.driver.get(url)
 
     def driver_close(self):
-        Logger(__name__).write_info("Driver closed")
+        Logger(__name__).write_info("driver closed")
         return self.driver.close()
 
     def page_refresh(self):
-        Logger(__name__).write_info("Refresh page")
+        Logger(__name__).write_info("refresh page")
         return self.driver.refresh()

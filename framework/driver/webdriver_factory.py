@@ -14,12 +14,12 @@ class WebDriverFactory:
         if browser_name == Browsers.firefox.value:
             driver = webdriver.Firefox()
             driver.maximize_window()
-            Logger(__name__).write_info("Browser is Firefox")
+            Logger(__name__).write_info("browser is Firefox")
             return driver
         elif browser_name == Browsers.chrome.value:
             driver = webdriver.Chrome()
             driver.maximize_window()
-            Logger(__name__).write_info("Browser is Chrome")
+            Logger(__name__).write_info("browser is Chrome")
             return driver
 
-        Logger(__name__).write_error("Browser name isn't correct: " + str(browser_name))
+        Logger(__name__).write_error("browser name isn't correct: " + str(browser_name))

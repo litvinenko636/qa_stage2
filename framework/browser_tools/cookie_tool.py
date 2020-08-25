@@ -12,9 +12,9 @@ class CookieTool:
         try:
             cookie_added = self.get_some_cookie(cookie_name)
             assert {cookie_added['name']: cookie_added['value']} == {cookie_name: cookie_value}
-            Logger(__name__).write_info('Assertion is correct!')
+            Logger(__name__).write_info('assertion is correct!')
         except AssertionError:
-            Logger(__name__).write_error('Assertion error!')
+            Logger(__name__).write_error('assertion error!')
         finally:
             return cookie_add
 
@@ -26,12 +26,12 @@ class CookieTool:
 
     def delete_all_cookies(self):
         self.driver.delete_all_cookies()
-        Logger(__name__).write_info('Cookies is deleted!')
+        Logger(__name__).write_info('cookies is deleted!')
         try:
             assert self.get_all_cookies() == []
-            Logger(__name__).write_info('Assertion is correct!')
+            Logger(__name__).write_info('assertion is correct!')
         except AssertionError:
-            Logger(__name__).write_error('Assertion error!')
+            Logger(__name__).write_error('assertion error!')
             return False
         finally:
             return True
