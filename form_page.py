@@ -11,6 +11,7 @@ class FormPageLocators:
     accept_terms_checkbox = (By.XPATH, "//*[@class='icon icon-check checkbox__check']")
     dropdown_field_button = (By.XPATH, "//*[@class='dropdown__field']")
     dropdown_item_button = (By.CSS_SELECTOR, "div.dropdown__list > div:nth-child(9)")
+    next_button = (By.XPATH, "//*[@class='button--secondary']")
 
 
 class FormPage:
@@ -40,3 +41,7 @@ class FormPage:
     @staticmethod
     def dropdown_item_click():
         return Button(FormPageLocators.dropdown_item_button).element_click()
+
+    @staticmethod
+    def next_button_click():
+        return Button(FormPageLocators.next_button).element_click()
