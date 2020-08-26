@@ -26,3 +26,11 @@ class JsonReader:
     def get_domain(self):
         domain = self.data["domain"]
         return domain
+
+    def get_num(self):
+        num = self.data["num"]
+        return num
+
+    def get_filepath(self):
+        filepath = self.data["filepath"]
+        return filepath

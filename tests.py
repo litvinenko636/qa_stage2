@@ -20,6 +20,9 @@ def test1(data, config):
     form_page.dropdown_field_button_click()
     form_page.dropdown_item_click()
     form_page.accept_terms_check()
-    form_page.next_button_click()
+    form_page.first_form_button_click()
 
-    form_page.unselect_all_check()
+    form_page.select_random_interests(config.get_num())
+    is_file_uploaded = form_page.upload_image(config.get_filepath())
+    assert is_file_uploaded == True
+    form_page.second_form_button_click()
