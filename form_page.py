@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 from framework.browser_pages.button import Button
-from framework.browser_pages.scroll_bar import ScrollBar
 from framework.browser_pages.text_field import TextField
 
 
@@ -12,6 +11,8 @@ class FormPageLocators:
     dropdown_field_button = (By.XPATH, "//*[@class='dropdown__field']")
     dropdown_item_button = (By.CSS_SELECTOR, "div.dropdown__list > div:nth-child(9)")
     next_button = (By.XPATH, "//*[@class='button--secondary']")
+    unselect_all_checkbox = (By.CSS_SELECTOR, "div.avatar-and-interests__section.avatar-and-interests__interests"
+                                              "-section > div > div:nth-child(21) > div > span.checkbox.small")
 
 
 class FormPage:
@@ -45,3 +46,7 @@ class FormPage:
     @staticmethod
     def next_button_click():
         return Button(FormPageLocators.next_button).element_click()
+
+    @staticmethod
+    def unselect_all_check():
+        return Button(FormPageLocators.unselect_all_checkbox).element_click()

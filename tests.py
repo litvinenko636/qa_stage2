@@ -21,3 +21,5 @@ def test1(data, config):
     form_page.dropdown_item_click()
     form_page.accept_terms_check()
     form_page.next_button_click()
+
+    form_page.unselect_all_check()
