@@ -6,7 +6,6 @@ from form_page import FormPage
 
 @pytest.mark.usefixtures('data', 'config')
 def test1(data, config):
-
     action = BrowserActions()
     action.url_open(config.get_url())
 
@@ -26,3 +25,18 @@ def test1(data, config):
     is_file_uploaded = form_page.upload_image(config.get_filepath())
     assert is_file_uploaded == True
     form_page.second_form_button_click()
+
+
+@pytest.mark.usefixtures('config')
+def test2(config):
+    action = BrowserActions()
+    action.url_open(config.get_url())
+
+    main_page = MainPage()
+    main_page.here_button_click()
+
+    form_page = FormPage()
+    is_cookie_accepted = form_page.cookie_accept_button_click()
+    assert is_cookie_accepted == True
+    is_form_closed = form_page.close_help_form_button_click()
+    assert is_form_closed == True

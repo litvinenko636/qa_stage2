@@ -17,6 +17,9 @@ class FormPageLocators:
                                               "-section > div > div:nth-child(21) > div > span.checkbox.small")
     upload_button = (By.XPATH, "//*[@class='avatar-and-interests__upload-button']")
     second_form_button = (By.XPATH, "//*[@class='button button--stroked button--white button--fluid']")
+    cookie_accept_button = (By.XPATH, "//*[@class='button button--solid button--transparent']")
+    close_help_form_button = (By.XPATH, "//*[@class='button button--solid button--blue "
+                                        "help-form__send-to-bottom-button']")
 
 
 class FormPage:
@@ -73,3 +76,11 @@ class FormPage:
     @staticmethod
     def second_form_button_click():
         return Button(FormPageLocators.second_form_button).element_click()
+
+    @staticmethod
+    def cookie_accept_button_click():
+        return Button(FormPageLocators.cookie_accept_button).element_click()
+
+    @staticmethod
+    def close_help_form_button_click():
+        return Button(FormPageLocators.close_help_form_button).element_click()

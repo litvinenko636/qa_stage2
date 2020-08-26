@@ -20,8 +20,12 @@ class BaseElement:
 
     def element_click(self):
         Logger(__name__).write_info("button is clicked")
-        element = (ElementWait().element_wait()).until(EC.presence_of_element_located(self.locator))
-        return element.click()
+        try:
+            element = (ElementWait().element_wait()).until(EC.presence_of_element_located(self.locator))
+            element.click()
+            return True
+        except EC:
+            return False
 
     def text_input(self, text):
         try:
