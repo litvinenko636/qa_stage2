@@ -19,7 +19,7 @@ class BasicAuth:
         data = self.request.json()
         try:
             Logger(__name__).write_info(data)
-            Logger(__name__).write_info('Data assertion is correct!')
+            Logger(__name__).write_info('data assertion is correct!')
         except AssertionError:
-            Logger(__name__).write_error('Data assertion is incorrect')
+            Logger(__name__).write_error('data assertion is incorrect')
         return data

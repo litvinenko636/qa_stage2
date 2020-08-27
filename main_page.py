@@ -3,10 +3,10 @@ from framework.browser_pages.button import Button
 
 
 class MainPageLocators:
-    button = (By.XPATH, "//*locator")
+    here_button = (By.XPATH, "//*[@class='start__link']")
 
 
 class MainPage:
-
-    def some_func(self):
-        pass
+    @staticmethod
+    def here_button_click():
+        return Button(MainPageLocators.here_button).element_click()

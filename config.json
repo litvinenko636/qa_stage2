@@ -1,4 +1,6 @@
 {
-  "url": "some_url",
-  "browser": "chrome"
+  "url": "https://userinyerface.com/game.html%20target=",
+  "browser": "chrome",
+  "num": 3,
+  "filepath": "/image.png"
 }

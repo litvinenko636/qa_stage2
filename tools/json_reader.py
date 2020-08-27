@@ -14,3 +14,23 @@ class JsonReader:
     def get_browser(self):
         browser = self.data["browser"]
         return browser
+
+    def get_password(self):
+        password = self.data["password"]
+        return password
+
+    def get_email(self):
+        email = self.data["email"]
+        return email
+
+    def get_domain(self):
+        domain = self.data["domain"]
+        return domain
+
+    def get_num(self):
+        num = self.data["num"]
+        return num
+
+    def get_filepath(self):
+        filepath = self.data["filepath"]
+        return filepath
