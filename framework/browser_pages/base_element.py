@@ -27,6 +27,15 @@ class BaseElement:
         except EC:
             return False
 
+    def get_text(self):
+        try:
+            element = (ElementWait().element_wait()).until(EC.presence_of_element_located(self.locator))
+            element_text = element.text
+            Logger(__name__).write_info(element_text + " - item text received")
+            return element_text
+        except EC:
+            Logger(__name__).write_error("cant find text in element")
+
     def text_input(self, text):
         try:
             Logger(__name__).write_info(text + " - has been sent")
