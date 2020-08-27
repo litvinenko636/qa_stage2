@@ -14,6 +14,7 @@ class FormPageLocators:
     dropdown_item_button = (By.CSS_SELECTOR, "div.dropdown__list > div:nth-child(9)")
     first_form_button = (By.XPATH, "//*[@class='button--secondary']")
     page_indicator_text = (By.XPATH, "//*[@class='page-indicator']")
+    page_timer_text = (By.XPATH, "//*[@class='timer timer--white timer--center']")
     unselect_all_checkbox = (By.CSS_SELECTOR, "div.avatar-and-interests__section.avatar-and-interests__interests"
                                               "-section > div > div:nth-child(21) > div > span.checkbox.small")
     upload_button = (By.XPATH, "//*[@class='avatar-and-interests__upload-button']")
@@ -89,3 +90,7 @@ class FormPage:
     @staticmethod
     def get_page_indicator():
         return TextField(FormPageLocators.page_indicator_text).get_text()
+
+    @staticmethod
+    def get_page_timer():
+        return TextField(FormPageLocators.page_timer_text).get_text()

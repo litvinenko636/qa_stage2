@@ -72,3 +72,19 @@ def test3(config):
     assert is_cookie_accepted == True
 
     action.driver_close()
+
+
+@pytest.mark.usefixtures('config')
+def test4(config):
+    action = BrowserActions()
+    action.url_open(config.get_url())
+
+    main_page = MainPage()
+    main_page.here_button_click()
+
+    form_page = FormPage()
+    page_indicator = form_page.get_page_indicator()
+    assert page_indicator == "1 / 4"
+
+    timer_start = form_page.get_page_timer()
+    assert timer_start == "00:00:00"
