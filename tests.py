@@ -30,6 +30,7 @@ def test1(data, config):
     form_page.select_random_interests(config.get_num())
     is_file_uploaded = form_page.upload_image(config.get_filepath())
     assert is_file_uploaded == True
+
     form_page.second_form_button_click()
     page_indicator = form_page.get_page_indicator()
     assert page_indicator == "3 / 4"
@@ -48,6 +49,7 @@ def test2(config):
     form_page = FormPage()
     page_indicator = form_page.get_page_indicator()
     assert page_indicator == "1 / 4"
+
     is_form_closed = form_page.close_help_form_button_click()
     assert is_form_closed == True
 
@@ -65,6 +67,7 @@ def test3(config):
     form_page = FormPage()
     page_indicator = form_page.get_page_indicator()
     assert page_indicator == "1 / 4"
+
     is_cookie_accepted = form_page.cookie_accept_button_click()
     assert is_cookie_accepted == True
 
