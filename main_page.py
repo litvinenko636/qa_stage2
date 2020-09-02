@@ -1,12 +1,13 @@
 from selenium.webdriver.common.by import By
 from framework.browser_pages.button import Button
+from framework.browser_pages.text_field import TextField
 
 
 class MainPageLocators:
-    button = (By.XPATH, "//*locator")
+    title_text = (By.XPATH, "//*[@id='content']/div/h3")
 
 
 class MainPage:
-
-    def some_func(self):
-        pass
+    @staticmethod
+    def get_title():
+        return TextField(MainPageLocators.title_text).get_text()

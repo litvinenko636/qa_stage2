@@ -3,7 +3,11 @@ from framework.browser_tools.browser_actions import BrowserActions
 from main_page import MainPage
 
 
-@pytest.mark.usefixtures('config')
-def test1(config):
+@pytest.mark.usefixtures('config', 'data')
+def test1(config, data):
     action = BrowserActions()
     action.url_open(config.get_url())
+
+    main_page = MainPage()
+    title = main_page.get_title()
+    assert title == data.get_title()
