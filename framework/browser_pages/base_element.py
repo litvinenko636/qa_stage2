@@ -36,10 +36,10 @@ class BaseElement:
         except EC:
             Logger(__name__).write_error("cant find text in element")
 
-    def text_input(self, text):
+    def text_input(self, text, *args):
         try:
             Logger(__name__).write_info(text + " - has been sent")
-            return self._find_element().send_keys(text)
+            return self._find_element().send_keys(text, *args)
         except exceptions.TimeoutException:
             Logger(__name__).write_error("incorrect input!")
 
