@@ -18,17 +18,17 @@ class APIUtils:
         if response.json() != {} and response.json() != []:
             Logger(__name__).write_info("correct json response, status code - " + str(response.status_code))
             JsonImporter(text + '_' + str(num) + '.json', response.json()).write()
-            return [response.status_code, response.json()]
+            return response.status_code
         elif response.json() == {}:
-            Logger(__name__).write_info("incorrect json response")
-            return False
+            Logger(__name__).write_warning("incorrect json response, status code - " + str(response.status_code))
+            return response.status_code
 
     def get_items(self, text):
         response = requests.get(self.url + "/" + text)
         if response.json() != {} and response.json() != []:
             Logger(__name__).write_info("correct json response, status code - " + str(response.status_code))
             JsonImporter(text + '.json', response.json()).write()
-            return [response.status_code, response.json()]
+            return response.status_code
         elif response.json() == {}:
-            Logger(__name__).write_info("incorrect json response")
-            return False
+            Logger(__name__).write_warning("incorrect json response, status code - " + str(response.status_code))
+            return response.status_code
