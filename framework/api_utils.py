@@ -1,24 +1,24 @@
 import requests
 from requests.exceptions import HTTPError
 from tools.logger import Logger
+from tools.json_importer import JsonImporter
 
 
 class APIUtils:
     def __init__(self, url):
-        try:
-            self.response = requests.get(url)
-            self.response.raise_for_status()
-        except HTTPError as http_err:
-            print(f'HTTP error occurred: {http_err}')
-        except Exception as err:
-            print(f'Other error occurred: {err}')
-        else:
-            print('Success!')
-
-    def get_content(self):
-        Logger(__name__).write_info(self.response.content)
-        return self.response.content
+        self.url = url
 
     def get_status_code(self):
-        Logger(__name__).write_info(self.response.status_code)
-        return self.response.status_code
+        response = requests.get(self.url)
+        Logger(__name__).write_info(response.status_code)
+        return response.status_code
+
+    def get_json(self):
+        response = requests.get(self.url + "/posts")
+        if response.json() != {} and response.json() != []:
+            Logger(__name__).write_info("correct json response")
+            JsonImporter('posts.json', response.json()).write()
+            return response.json()
+        else:
+            Logger(__name__).write_info("incorrect json response")
+
