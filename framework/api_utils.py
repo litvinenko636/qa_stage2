@@ -14,7 +14,7 @@ class APIUtils:
         return response.status_code
 
     def get_item(self, text, num):
-        response = requests.get(self.url + "/" + text + "/" + str(num))
+        response = requests.get(self.url + '/' + text + '/' + str(num))
         if response.json() != {} and response.json() != []:
             Logger(__name__).write_info("correct json response, status code - " + str(response.status_code))
             JsonImporter(text + '_' + str(num) + '.json', response.json()).write()
@@ -24,11 +24,20 @@ class APIUtils:
             return response.status_code
 
     def get_items(self, text):
-        response = requests.get(self.url + "/" + text)
+        response = requests.get(self.url + '/' + text)
         if response.json() != {} and response.json() != []:
             Logger(__name__).write_info("correct json response, status code - " + str(response.status_code))
             JsonImporter(text + '.json', response.json()).write()
             return response.status_code
         elif response.json() == {}:
             Logger(__name__).write_warning("incorrect json response, status code - " + str(response.status_code))
+            return response.status_code
+
+    def post_item(self, text, json):
+        response = requests.post(self.url + '/' + text, json=json)
+        if response.status_code == 201:
+            Logger(__name__).write_info('correct POST request')
+            return response.status_code
+        else:
+            Logger(__name__).write_error('incorrect POST request')
             return response.status_code

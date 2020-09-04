@@ -1,4 +1,10 @@
 {
   "url": "https://jsonplaceholder.typicode.com",
-  "browser": "chrome"
+  "browser": "chrome",
+  "post_example": {
+    "title": "example",
+    "body": "example again",
+    "userId": 1,
+    "id": 101
+  }
 }

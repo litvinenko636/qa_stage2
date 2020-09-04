@@ -14,3 +14,7 @@ class JsonReader:
     def get_browser(self):
         browser = self.data["browser"]
         return browser
+
+    def get_post_example(self):
+        post_example = self.data["post_example"]
+        return post_example
