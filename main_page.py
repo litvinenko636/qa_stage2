@@ -19,17 +19,15 @@ class MainPage:
         return TextField(MainPageLocators.title_text).get_text()
 
     @staticmethod
-    def iframe_start():
-        iframe = IFrameTool()
-        return iframe.iframe_open(MainPageLocators.frame)
-
-    @staticmethod
     def text_input(text):
+        iframe = IFrameTool()
+        iframe.iframe_open(MainPageLocators.frame)
         TextField(MainPageLocators.frame_text_area).text_field_clear()
         return TextField(MainPageLocators.frame_text_area).text_input(text)
 
     @staticmethod
     def all_text_bold():
         TextField(MainPageLocators.frame_text_area).text_input(Keys.CONTROL, 'a')
-        Button(MainPageLocators.bold_text_button).move_to_element()
-        return Button(MainPageLocators.bold_text_button).element_click()
+        iframe = IFrameTool()
+        iframe.iframe_close()
+        Button(MainPageLocators.bold_text_button).element_click()
