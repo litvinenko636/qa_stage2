@@ -13,7 +13,7 @@ class APIUtils:
         Logger(__name__).write_info(response.status_code)
         return response.status_code
 
-    def get_json(self):
+    def get_posts(self):
         response = requests.get(self.url + "/posts")
         if response.json() != {} and response.json() != []:
             Logger(__name__).write_info("correct json response")
@@ -21,4 +21,15 @@ class APIUtils:
             return response.json()
         else:
             Logger(__name__).write_info("incorrect json response")
+            return False
+
+    def get_post(self, num):
+        response = requests.get(self.url + "/posts/" + str(num))
+        if response.json() != {} and response.json() != []:
+            Logger(__name__).write_info("correct json response")
+            JsonImporter('post_' + str(num) + '.json', response.json()).write()
+            return response.json()
+        else:
+            Logger(__name__).write_info("incorrect json response")
+            return False
 
