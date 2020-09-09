@@ -2,6 +2,8 @@ import logging
 
 
 class Logger:
+    for handler in logging.root.handlers[:]:
+        logging.root.removeHandler(handler)
     logging.basicConfig(filename="result.log",
                         format='%(name)s - %(levelname)s - %(asctime)s - %(message)s',
                         datefmt='%d-%b-%y %H:%M:%S',
