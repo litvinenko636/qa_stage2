@@ -19,7 +19,7 @@ class VKApiUtils:
         url = self.basic_url + Methods.wall_post.value + self.param_divider + params + self.access_token_and_version
         response = requests.post(url)
         if response.status_code == 200:
-            Logger(__name__).write_info('text /' + message + '/ has been sent' )
+            Logger(__name__).write_info('text /' + message + '/ has been sent')
             Logger(__name__).write_info('correct request response, status code - ' + str(response.status_code))
             try:
                 Logger(__name__).write_info(response.json())
@@ -29,3 +29,9 @@ class VKApiUtils:
         elif response.status_code != 200:
             Logger(__name__).write_warning('incorrect request response, status code - ' + str(response.status_code))
             return response.json()
+
+    def edit_post(self, post_id, message, fileid):
+        pass
+
+    def upload_wall_image(self, filename):
+        pass
