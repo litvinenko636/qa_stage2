@@ -26,3 +26,7 @@ class JsonReader:
     def get_token(self):
         token = self.data["token"]
         return token
+
+    def get_user_id(self):
+        user_id = self.data["user_id"]
+        return user_id

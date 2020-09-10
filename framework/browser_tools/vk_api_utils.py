@@ -26,7 +26,6 @@ class VKApiUtils:
                 return response.json()
             except HTTPError:
                 Logger(__name__).write_error('incorrect json response')
-                return False
         elif response.status_code != 200:
             Logger(__name__).write_warning('incorrect request response, status code - ' + str(response.status_code))
             return response.json()
