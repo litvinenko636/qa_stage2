@@ -21,9 +21,12 @@ def test1(config, data):
     feed_page.my_page_click()
 
     vk_api = VKApiUtils(data.get_token())
-    response = vk_api.create_post(random_string(10))
-    post_id = response['response']['post_id']
 
+    response = vk_api.create_post('Привет, работяги')
+    post_id = response['response']['post_id']
     user_page = UserPage()
     assert user_page.get_post_id(post_id) == post_user_id(data.get_user_id(), post_id)
+
+    photo_info = vk_api.save_wall_image()
+    vk_api.edit_post(photo_info, random_string(10), post_id)
     # action.driver_close()
