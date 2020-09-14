@@ -35,3 +35,6 @@ class VKApiUtils:
 
     def upload_wall_image(self, filename):
         pass
+
+    def save_wall_image(self, user_id):
+        pass
