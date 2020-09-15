@@ -42,10 +42,7 @@ class VKApiUtils:
         params = 'message=' + message + self.param_divider + 'attachments=' + photo + self.param_divider + 'post_id=' + str(post_id)
         Logger(__name__).write_info('text /' + message + '/ has been sent')
         url = self.basic_url + Methods.wall_edit.value + self.method_divider + params + self.access_token_and_version
-
-        response = requests.post(url)
-        Logger(__name__).write_info(response.json())
-        return response.json()
+        requests.post(url)
 
     def upload_wall_image(self):
         server_info = VKApiUtils.get_server_address(self)
@@ -53,18 +50,15 @@ class VKApiUtils:
 
         photo = {'photo': open('image.jpg', 'rb')}
         response = requests.post(upload_url, files=photo)
-        Logger(__name__).write_info(response.json())
         return response.json()
 
     def save_wall_image(self):
         response = VKApiUtils.upload_wall_image(self)
-        Logger(__name__).write_info(response)
 
         params = 'server=' + str(response['server']) + self.param_divider + 'photo=' + response['photo'] + self.param_divider + 'hash=' + response['hash']
         url = self.basic_url + Methods.photos_save.value + self.method_divider + params + self.access_token_and_version
 
         result = requests.post(url)
-        Logger(__name__).write_info(result.json())
         return result.json()
 
     def get_server_address(self):
