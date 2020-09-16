@@ -22,11 +22,16 @@ def test1(config, data):
 
     vk_api = VKApiUtils(data.get_token())
 
-    response = vk_api.create_post('Привет, работяги')
+    random_text_1 = random_string(10)
+    response = vk_api.create_post(random_text_1)
     post_id = response['response']['post_id']
     user_page = UserPage()
     assert user_page.get_post_id(post_id) == post_user_id(data.get_user_id(), post_id)
 
     photo_info = vk_api.save_wall_image()
-    vk_api.edit_post(photo_info, random_string(10), post_id)
+    random_text_2 = random_string(10)
+    vk_api.edit_post(photo_info, random_text_2, post_id)
+
+    vk_api.create_comment(post_id, random_string(10))
+    vk_api.delete_post(post_id)
     # action.driver_close()
