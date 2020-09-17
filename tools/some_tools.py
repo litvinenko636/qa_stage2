@@ -6,5 +6,5 @@ def random_string(size):
     return ''.join(random.choice(string.ascii_letters) for _ in range(size))
 
 
-def post_user_id(str1, str2):
-    return str(str1) + '_' + str(str2)
+def user_post_add(user, post):
+    return str(user) + '_' + str(post)

@@ -2,7 +2,7 @@ from enum import Enum
 import requests
 from requests.exceptions import HTTPError
 from tools.logger import Logger
-from tools.some_tools import post_user_id
+from tools.some_tools import user_post_add
 
 
 class Methods(Enum):
