@@ -1,5 +1,4 @@
 import requests
-from requests.exceptions import HTTPError
 from tools.logger import Logger
 from tools.json_importer import JsonImporter
 
@@ -13,23 +12,31 @@ class APIUtils:
         Logger(__name__).write_info(response.status_code)
         return response.status_code
 
-    def get_posts(self):
-        response = requests.get(self.url + "/posts")
+    def get_item(self, text, num):
+        response = requests.get(self.url + '/' + text + '/' + str(num))
         if response.json() != {} and response.json() != []:
-            Logger(__name__).write_info("correct json response")
-            JsonImporter('posts.json', response.json()).write()
-            return response.json()
-        else:
-            Logger(__name__).write_info("incorrect json response")
-            return False
+            Logger(__name__).write_info("correct json response, status code - " + str(response.status_code))
+            JsonImporter(text + '_' + str(num) + '.json', response.json()).write()
+            return response.status_code
+        elif response.json() == {}:
+            Logger(__name__).write_warning("incorrect json response, status code - " + str(response.status_code))
+            return response.status_code
 
-    def get_post(self, num):
-        response = requests.get(self.url + "/posts/" + str(num))
+    def get_items(self, text):
+        response = requests.get(self.url + '/' + text)
         if response.json() != {} and response.json() != []:
-            Logger(__name__).write_info("correct json response")
-            JsonImporter('post_' + str(num) + '.json', response.json()).write()
-            return response.json()
-        else:
-            Logger(__name__).write_info("incorrect json response")
-            return False
+            Logger(__name__).write_info("correct json response, status code - " + str(response.status_code))
+            JsonImporter(text + '.json', response.json()).write()
+            return response.status_code
+        elif response.json() == {}:
+            Logger(__name__).write_warning("incorrect json response, status code - " + str(response.status_code))
+            return response.status_code
 
+    def post_item(self, text, json):
+        response = requests.post(self.url + '/' + text, json=json)
+        if response.status_code == 201:
+            Logger(__name__).write_info('correct POST request')
+            return response.status_code
+        else:
+            Logger(__name__).write_error('incorrect POST request')
+            return response.status_code
