@@ -3,7 +3,7 @@ from feed_page import FeedPage
 from framework.browser_tools.browser_actions import BrowserActions
 from auth_page import AuthPage
 from framework.browser_tools.vk_api_utils import VKApiUtils
-from tools.some_tools import random_string, user_post_add
+from tools.some_tools import random_string, user_item_add
 from user_page import UserPage
 
 
@@ -26,14 +26,16 @@ def test1(config, data):
     response = vk_api.create_post(random_text_1)
 
     post_id = response['response']['post_id']
-    user_post = user_post_add(data.get_user_id(), post_id)
+    user_post = user_item_add(data.get_user_id(), post_id)
 
     user_page = UserPage()
     assert user_page.get_post_id(post_id) == user_post
 
     photo_info = vk_api.save_wall_image()
     random_text_2 = random_string(10)
+
     vk_api.edit_post(photo_info, random_text_2, post_id)
+    assert user_item_add(data.get_user_id(), photo_info['response'][0]['id']) == user_page.get_photo_id(user_post)
 
     vk_api.create_comment(post_id, random_string(10))
     user_page.set_like(user_post)

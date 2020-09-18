@@ -3,7 +3,7 @@ from enum import Enum
 import requests
 from requests.exceptions import HTTPError
 from tools.logger import Logger
-from tools.some_tools import user_post_add
+from tools.some_tools import user_item_add
 
 
 class Methods(Enum):
@@ -53,6 +53,7 @@ class VKApiUtils:
         upload_url = server_info['response']['upload_url']
         photo = {'photo': open('image.jpg', 'rb')}
         response = requests.post(upload_url, files=photo)
+        Logger(__name__).write_info(response.json())
         return response.json()
 
     def save_wall_image(self):
@@ -61,6 +62,7 @@ class VKApiUtils:
             'photo'] + self.param_divider + 'hash=' + response['hash']
         url = self.basic_url + Methods.photos_save.value + self.method_divider + params + self.access_token_and_version
         result = requests.post(url)
+        Logger(__name__).write_info(result.json())
         return result.json()
 
     def get_server_address(self):
