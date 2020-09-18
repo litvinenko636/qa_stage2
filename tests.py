@@ -41,5 +41,5 @@ def test1(config, data):
     user_page.set_like(user_post)
     vk_api.is_post_liked(post_id)
 
-    # vk_api.delete_post(post_id)
-    # action.driver_close()
+    vk_api.delete_post(post_id)
+    action.driver_close()
